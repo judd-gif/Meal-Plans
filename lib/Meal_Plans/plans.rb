@@ -15,8 +15,7 @@ end
 def self.scrape_plans(url)
     doc = Nokogiri::HTML(open(url))
     plan = self.new
-    plan.name = doc.search("h1.entry-title").text.strip
-    plan.type = list = doc.search("div.entry-content").text.strip 
+  
     
     plan
 end 
@@ -26,7 +25,7 @@ def self.scrape_muscle_gain
 doc = Nokogiri::HTML(open("https://www.medicalnewstoday.com/articles/bodybuilding-meal-plan#7-day-meal-plan"))
 
 plan = self.new
-plan.name = doc.search("h1.Bodybuilding meal plan: What to eat and why").text.strip
+plan.name = doc.search("div.css-z468a2.h1").text.strip
 plan.type = list = doc.search("div.css-0").text.strip 
 
 plan
@@ -47,7 +46,7 @@ doc = Nokogiri::HTML(open("https://www.atkins.com/how-it-works/library/articles/
 
 plan = self.new
 plan.name = doc.search("div.medium-8 columns left-content-column.h1").text.strip
-plan.type = list = doc.search("div.medium-8 columns left-content-column.h2")
+plan.type = list = doc.search("div.medium-8 columns left-content-column.h2").text.strip
 
 plan
 end
