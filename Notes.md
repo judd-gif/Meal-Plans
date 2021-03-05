@@ -9,7 +9,7 @@ HTML =  https://themealprepninja.com/7-day-meal-plan-for-muscle-gain/
 2. Weight loss = one-week meal plan to get you started 
 HTML = https://www.skinnytaste.com/7-day-weight-loss-meal-plan-march-9-15/
 3. Keto Diet = one-week meal plan to get you started 
-HTML = https://www.healthline.com/nutrition/keto-diet-meal-plan-and-menu
+HTML = https://www.atkins.com/how-it-works/library/articles/7-day-keto-meal-plan
 
 Which Plan do you want to Learn more about?
 

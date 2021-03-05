@@ -14,7 +14,6 @@ class MealPlans::CLI
         puts "Time For a Meal Plan!:"
         #@plans = MealPlans::Plans.today
         MealPlans::Plans::URLS.keys.each.with_index(1) do |plan, i|
-            #binding.pry
             puts "#{i}. #{plan}"
         end
     end
@@ -26,7 +25,6 @@ class MealPlans::CLI
         input = gets.strip.downcase
         if input.to_i > 0
             url =  MealPlans::Plans::URLS.values[input.to_i - 1]
-            binding.pry
             plan = MealPlans::Plans.today(url)
             # the_plans = @plans[input.to_i - 1]    
             puts "#{plan.name} - #{plan.type}"        
