@@ -25,8 +25,8 @@ doc = Nokogiri::HTML(open("https://www.mensjournal.com/food-drink/the-skinny-guy
 
 plan = self.new
 plan.name = doc.search("h1.content-title").text.strip
-plan.type = list = doc.search("p.To effectively gain muscle mass or reduce body fat, a person needs to focus on eating the right number of calories.").text.strip 
-
+plan.type = list = doc.search("h2.Meal 1: Cheesy Scrambled Eggs with Scallions").text.strip 
+binding.pry
 plan
 
 end
@@ -37,7 +37,7 @@ doc = Nokogiri::HTML(open("https://www.skinnytaste.com/7-day-weight-loss-meal-pl
 plan = self.new
 plan.name = doc.search("h1.post-title").text.strip
 plan.type = list = doc.search("img.lazyloaded").text.strip
-    
+   
 plan
 end
 

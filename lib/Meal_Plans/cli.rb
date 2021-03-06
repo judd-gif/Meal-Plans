@@ -28,7 +28,8 @@ class MealPlans::CLI
             plan = MealPlans::Scraper.today(url)
             doc = Nokogiri::HTML(URI.open(url))
             # the_plans = @plans[input.to_i - 1]    
-            puts "#{plan.name} - #{plan.type}"    
+            puts "#{plan.name} - #{plan.type}"   
+            binding.pry 
         elsif input == "list"
             list_plans
         else    
