@@ -13,7 +13,7 @@ class MealPlans::CLI
     def list_plans
         puts "Time For a Meal Plan!:"
         #@plans = MealPlans::Plans.today
-        MealPlans::Plans::URLS.keys.each.with_index(1) do |plan, i|
+        MealPlans::Scraper::URLS.keys.each.with_index(1) do |plan, i|
             puts "#{i}. #{plan}"
         end
     end
@@ -24,10 +24,11 @@ class MealPlans::CLI
         puts "Enter the number of the Plan you'd like more info on or type list to see the Plans again or type exit:"
         input = gets.strip.downcase
         if input.to_i > 0
-            url =  MealPlans::Plans::URLS.values[input.to_i - 1]
-            plan = MealPlans::Plans.today(url)
+            url =  MealPlans::Scraper::URLS.values[input.to_i - 1]
+            plan = MealPlans::Scraper.today(url)
+            doc = Nokogiri::HTML(URI.open(url))
             # the_plans = @plans[input.to_i - 1]    
-            puts "#{plan.name} - #{plan.type}"        
+            puts "#{plan.name} - #{plan.type}"    
         elsif input == "list"
             list_plans
         else    
