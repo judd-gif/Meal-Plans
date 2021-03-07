@@ -1,16 +1,11 @@
 require'pry'
 # binding.pry
 class MealPlans::Scraper
-  
-# def scraper
-# url = "https://urbantastebud.com/best-meal-kits-for-one-person/"
-
-# end 
-
 
 
 def get_page
-url = Nokogiri::HTML(open("https://urbantastebud.com/best-meal-kits-for-one-person/"))
+url = Nokogiri::HTML(open("https://www.reviewed.com/cooking/best-right-now/the-best-meal-kit-delivery-services"))
+
 end
 
 def scrape_plans
@@ -19,8 +14,11 @@ end
 
 
 def build_plans
-    scrape_plans.each do
-        MealPlans::Plans    
+
+html_plans = get_page
+
+html_plans.css(".c-product-widget").each do |plan|
+  MealPlans::Plans.new_plan(plan)
     end
 end
 

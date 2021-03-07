@@ -1,24 +1,24 @@
 require 'pry'
 class MealPlans::Plans
 
-    attr_accessor :name, :price, :description, :discount, :url
+    attr_accessor :name, :description, :price, :url
 
 @@all = []
 
 def self.new_plan(r)
     self.new(
-        r.css("h3").text,
-        r.css("p")[1].text,
-        r.css(".position").text
+        r.css(".u3").text,
+        r.css("strong").first.parent.children.text,
+        r.xpath('//strong[contains(text(), "Cost:")]').first.parent.text
+
     )
 
 end
 
-def initialize(name=nil, type=nil, price=nil, description=nil, discount=nil)
+def initialize(name=nil, description=nil, price=nil)
 @name = name
-@price = price
 @description = description
-@discount = discount
+@price = price
 @@all << self
 
 end
