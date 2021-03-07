@@ -1,19 +1,23 @@
 require 'pry'
 class MealPlans::Plans
 
-    attr_accessor :name, :type, :price, :position, :discount
+    attr_accessor :name, :price, :description, :discount, :url
 
 @@all = []
 
-def self.new_plan
-    self.new
+def self.new_plan(r)
+    self.new(
+        r.css("h3").text,
+        r.css("p")[1].text,
+        r.css(".position").text
+    )
 
 end
 
-def initialize(name=nil, type=nil, price=nil, discount=nil)
+def initialize(name=nil, type=nil, price=nil, description=nil, discount=nil)
 @name = name
-@type = type
 @price = price
+@description = description
 @discount = discount
 @@all << self
 
@@ -23,13 +27,13 @@ def self.all
     @@all
 end
 
-def self.find(id)
-    self.all[id-1]
+def self.find(h3)
+    self.all[h3-1]
 end
 
 
 def doc
-    @doc ||= Nokogiri::HTML(open(self.url))
+    @doc = Nokogiri::HTML(open(self.url))
 end
 
 

@@ -1,10 +1,16 @@
 require'pry'
-binding.pry
+# binding.pry
 class MealPlans::Scraper
   
+# def scraper
+# url = "https://urbantastebud.com/best-meal-kits-for-one-person/"
+
+# end 
+
+
 
 def get_page
-Nokogiri::HTML(open("https://urbantastebud.com/best-meal-kits-for-one-person/"))
+url = Nokogiri::HTML(open("https://urbantastebud.com/best-meal-kits-for-one-person/"))
 end
 
 def scrape_plans
