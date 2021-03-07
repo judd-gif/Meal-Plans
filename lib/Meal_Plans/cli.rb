@@ -5,7 +5,6 @@ class MealPlans::CLI
     def call
         MealPlans::Scraper.new.build_plans
         puts "These are the Top 8 Best Meal Plans in 2021!"
-        # binding.pry
         menu
 
     end
@@ -26,8 +25,6 @@ class MealPlans::CLI
         puts ""
         puts "#{plan.name}"
         puts ""
-        puts ""
-        puts "-----------Price and Description-----------"
         puts "#{plan.description}"
         puts ""
         puts "#{plan.price}"
@@ -45,7 +42,6 @@ class MealPlans::CLI
         puts "Thank you! Have a great day!"
         exit
         else
-        puts ""
         puts "I don't understand that answer."
         end
     end
