@@ -1,8 +1,10 @@
-# MealPlans
+Meal Plans 
+
+This is an adaptation of the original gem written by Judd-gif. I have added in CSS selectors in the restaurant.rb file, and updated the scraped urls to use https instead of http.
+
+This Ruby Gem provides a CLI to view THE BEST MEAL KIT FOOD DELIVERY SERVICES OF 2021 in the World website.
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/Meal_Plans`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -32,5 +34,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/Meal_Plans.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[judd-gif]/Meal_Plans.
+
+## License
+
+The gem is available as open source under the terms of the MIT License (https://opensource.org/licenses/MIT) .
 
