@@ -15,7 +15,7 @@ class MealPlans::CLI
         puts "Which Top 13 Meal Plans would you like more information about? 1-13?"
         input = gets.strip.to_i
 
-        print_meal_plans(input)
+        print_meal_plan_detail(input)
 
 
         puts""
@@ -42,7 +42,8 @@ class MealPlans::CLI
         end
     end
 
-    def print_meal_plans(plan)
+    def print_meal_plan_detail(plan_ID)
+        plan = MealPlans::Plans.all(plan_ID-1)
         puts ""
         puts "-----------#{plan.name}-#{plan.position}------------"
         puts ""
