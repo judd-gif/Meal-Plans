@@ -4,57 +4,61 @@ require "pry"
 class MealPlans::CLI
     
     def call
-        list_plans
+        MealPlans::Scraper.new.build_plans
+        puts "These are the Top 10 Best Meal Plans in 2021!"
         menu
 
-        goodbye
-    end
-
-    def list_plans
-        puts "Time For a Meal Plan!:"
-        #@plans = MealPlans::Plans.today
-        MealPlans::Scraper::URLS.keys.each.with_index(1) do |plan, i|
-            puts "#{i}. #{plan}"
-        end
     end
 
     def menu
-        input = nil
-        while input != "exit"
-        puts "Enter the number of the Plan you'd like more info on or type list to see the Plans again or type exit:"
+        puts ""
+        puts "What number Meal Plan whould you like more information about? 1-13?"
+        input = gets.strip.to_i
+
+        print_meal_plans(input)
+
+        puts""
+        puts "what Meal Plan would you like more information on?"
+        input = gets.strip
+
+        plans = MealPlans::Plans.find(input.to_i)
+
+        print_meal_plans(plans)
+
+        puts ""
+        puts "Would you like to see another restuarant? Enter Y or N"
         input = gets.strip.downcase
-        if input.to_i > 0
-            url =  MealPlans::Scraper::URLS.values[input.to_i - 1]
-            plan = MealPlans::Scraper.today(url)
-            doc = Nokogiri::HTML(URI.open(url))
-            # the_plans = @plans[input.to_i - 1]    
-            puts "#{plan.name} - #{plan.type}"   
-            binding.pry 
-        elsif input == "list"
-            list_plans
-        else    
-        puts "Not sure what you want. Please type list or exit."     
-        end
+        if input == "y"
+        start
+        elsif input == "n"
+        puts ""
+        puts "Thank you! Have a great day!"
+        exit
+        else
+        puts ""
+        puts "I don't understand that answer."
+        start
         end
     end
 
+    def print_meal_plans(plans)
+        puts ""
+        puts "-----------#{plans.name}-#{plans.position}------------"
+        puts ""
+        puts "#{plans.price}"
+        puts ""
+        puts ""
+        puts "-----------Description-----------"
+        puts ""
+        puts "#{plans.description"
 
-    def goodbye
-        puts "See you next time for more Plans!!!"
+
+
+
+
 
     end
-
 
 
 end
 
-
-        # when "1"
-        #     puts "Here is a one-week meal plan to get you started!!!"
-        # when "2"
-        #     puts "Here is a one-week meal plan to get you started!!!"
-        # when "3"
-        #     puts "Here is a one-week meal plan to get you started!!!"
-        # when "list"
-        #     list_plans            
-        # else
