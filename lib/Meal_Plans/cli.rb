@@ -14,7 +14,7 @@ class MealPlans::CLI
 
     def menu
         puts ""
-        puts "Which Top 8 Meal Plans would you like more information about? 1-4?"
+        puts "Which Top 4 Meal Plans would you like more information about? 1-4?"
         input = gets.strip.to_i
 
         print_meal_plan_detail(input)
