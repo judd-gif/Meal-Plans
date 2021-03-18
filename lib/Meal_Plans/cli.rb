@@ -4,7 +4,7 @@ require "pry"
 class MealPlans::CLI
     def call
         MealPlans::Scraper.new.build_plans
-        puts "These are the Top 8 Best Meal Plans in 2021!"
+        puts "These are the Top 4 Best Meal Plans in 2021!"
         MealPlans::Plans.all[0..3].each_with_index do |meal_plan, index|
             puts "#{index + 1}. #{meal_plan.name}"
         end
