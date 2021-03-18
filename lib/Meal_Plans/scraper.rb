@@ -4,22 +4,18 @@ class MealPlans::Scraper
 
 
 def get_page
-url = Nokogiri::HTML(open("https://www.reviewed.com/cooking/best-right-now/the-best-meal-kit-delivery-services"))
+  Nokogiri::HTML(open("https://www.reviewed.com/cooking/best-right-now/the-best-meal-kit-delivery-services"))
 
 end
 
-def scrape_plans
- self.get_page
-end 
 
 
 def build_plans
+  html_plans = get_page
 
-html_plans = get_page
-
-html_plans.css(".c-product-widget").each do |plan|
-  MealPlans::Plans.new_plan(plan)
-    end
+  html_plans.css(".c-product-widget").each do |plan|
+    MealPlans::Plans.new_plan(plan)
+  end
 end
 
 

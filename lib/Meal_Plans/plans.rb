@@ -1,41 +1,38 @@
 require 'pry'
 class MealPlans::Plans
 
-    attr_accessor :name, :description, :price, :url
+    attr_accessor :name, :description, :price
+    
+    @@all = []
 
-@@all = []
+    def self.new_plan(r)
+        self.new(
+            r.css(".u3").text,
+            r.css("strong").first.parent.children.text,
+            r.xpath('//strong[contains(text(), "Cost:")]').first.parent.text
 
-def self.new_plan(r)
-    self.new(
-        r.css(".u3").text,
-        r.css("strong").first.parent.children.text,
-        r.xpath('//strong[contains(text(), "Cost:")]').first.parent.text
+        )
+    end
 
-    )
+    def initialize(name=nil, description=nil, price=nil)
+        @name = name
+        @description = description
+        @price = price
+        @@all << self
 
-end
+    end
 
-def initialize(name=nil, description=nil, price=nil)
-@name = name
-@description = description
-@price = price
-@@all << self
+    def self.all
+        @@all
+    end
+    
 
-end
-
-def self.all
-    @@all
-end
-
-def self.find(h3)
-    self.all[h3-1]
-end
+    def self.find(h3)
+        self.all[h3-1]
+    end
 
 
-def doc
-    @doc = Nokogiri::HTML(open(self.url))
-end
-
+ 
 
 
 end
